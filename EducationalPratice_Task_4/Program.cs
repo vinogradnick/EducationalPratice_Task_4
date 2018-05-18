@@ -26,7 +26,28 @@ namespace EducationalPratice_Task_4
         {
             return (double)x + Math.Log(x + 0.5) - 0.5;
         }
-        
+
+        static double Parse()
+        {
+            double result = 0;
+            bool status = false;
+            do
+            {
+                try
+                {
+                    result = double.Parse(Console.ReadLine());
+                    status = true;
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("Вы ввели неверное число");
+                }
+
+
+            } while (status == false);
+
+            return result;
+        }
         static void Main(string[] args)
         {
             double x,
@@ -36,7 +57,8 @@ namespace EducationalPratice_Task_4
                 result;//Результат выполнения программы
 
             double eps = 0.001;//Положительное число погрешность которого не должна превосходить E
-            eps = 
+            Console.WriteLine("Введите Положительное число погрешность которого не должна превосходить E ");
+            eps = Parse();
             /* Проверка значений на корни */
             if (eps > 2 || eps < 0)
                 Console.WriteLine("Корней на интервале нет");
