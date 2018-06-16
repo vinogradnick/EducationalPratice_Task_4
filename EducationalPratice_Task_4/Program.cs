@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace EducationalPratice_Task_4
 {
     /*
@@ -22,43 +17,16 @@ namespace EducationalPratice_Task_4
         /// </summary>
         /// <param name="x"></param>
         /// <returns></returns>
-        static double _func(double x)
-        {
-            return (double)x + Math.Log(x + 0.5) - 0.5;
-        }
-
-        static double Parse()
-        {
-            double result = 0;
-            bool status = false;
-            do
-            {
-                try
-                {
-                    result = double.Parse(Console.ReadLine());
-                    status = true;
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine("Вы ввели неверное число");
-                }
-
-
-            } while (status == false);
-
-            return result;
-        }
+        static double _func(double x) => (double)x + Math.Log(x + 0.5) - 0.5;
         static void Main(string[] args)
         {
             double x,
-                a = 0,//Начальное значение отрезка
-                b = 2,//Конечное значение  отрезка
-                temp,//Значение шага для вычисления
-                result;//Результат выполнения программы
-
+                a = 0, //Начальное значение отрезка
+                b = 2, //Конечное значение  отрезка
+                temp;//Значение шага для вычисления
             double eps = 0.001;//Положительное число погрешность которого не должна превосходить E
-            Console.WriteLine("Введите Положительное число погрешность которого не должна превосходить E ");
-            eps = Parse();
+            Console.WriteLine("Введите Положительное число погрешность которого не должна превосходить Epsilon ");
+            eps = MyLibary.Input.Double();
             /* Проверка значений на корни */
             if (eps > 2 || eps < 0)
                 Console.WriteLine("Корней на интервале нет");
@@ -74,8 +42,9 @@ namespace EducationalPratice_Task_4
                         a = temp;
                 }
                 x = (double)(a + b) / 2.0;
-                Console.WriteLine($"{x}");
+                Console.WriteLine($"[Значение функции при заданой точности {eps} ] = {x,8}");
             }
+            Console.WriteLine("Для выхода введите любую клавишу");
             Console.ReadKey();
         }
     }
